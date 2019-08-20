@@ -1,0 +1,15 @@
+{
+	"name": "reply-bot",
+	"version": "1.0.0",
+	"description": "Bot para responder mensagens no discord",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Bruno Silva",
+	"license": "MIT",
+	"dependencies": {
+		"discord.js": "^11.5.1"
+	}
+}
