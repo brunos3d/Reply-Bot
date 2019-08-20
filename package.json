@@ -4,12 +4,12 @@
 	"description": "Bot para responder mensagens no discord",
 	"main": "index.js",
 	"scripts": {
-		"start": "node index.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"start": "node ./src/index.js"
 	},
 	"author": "Bruno Silva",
 	"license": "MIT",
 	"dependencies": {
-		"discord.js": "^11.5.1"
+		"discord.js": "^11.5.1",
+		"express": "^4.17.1"
 	}
 }

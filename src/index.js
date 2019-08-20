@@ -10,7 +10,7 @@ const client = new Client();
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(PORT);
+app.listen(process.env.PORT || 8080);
 
 if (BOT_TOKEN) {
 	client.on('ready', () => {
