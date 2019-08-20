@@ -1,16 +1,20 @@
 const express = require('express');
-const path = require('path');
 const app = express();
+const http = require('http').Server(app);
+
 const { Client, RichEmbed } = require("discord.js");
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
+// const BOT_TOKEN = process.env.BOT_TOKEN;
 const PORT = process.env.PORT || 8080;
 
 const client = new Client();
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(PORT);
+http.listen(PORT, () => {
+	console.log('listening on *:' + port);
+});
 
 if (BOT_TOKEN) {
 	client.on('ready', () => {
