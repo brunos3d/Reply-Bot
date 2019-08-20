@@ -15,15 +15,17 @@ if (BOT_TOKEN) {
 			if (message.content != null && message.content.length > 0) {
 				if (message.content.includes('@')) {
 					const pattern = /@([0-9]+)/g;
-					const matches = pattern.exec(message.content);
+					const matches = message.content.match(pattern);
 
-					if (matches != null && matches.length > 1) {
-						const messageId = matches[1];
+					if (matches != null && matches.length > 0) {
+						matches.forEach(match => {
+							const messageId = match.replace('@', '');
 
-						message.channel.fetchMessage(messageId).then(replyMessage => {
-							sendMessageBox(message.channel, message.author, replyMessage, 0x008fff);
+							message.channel.fetchMessage(messageId).then(replyMessage => {
+								sendMessageBox(message.channel, message.author, replyMessage, 0x008fff);
+							});
+							// }).then(() => message.delete());
 						});
-						// }).then(() => message.delete());
 					}
 				}
 			}
