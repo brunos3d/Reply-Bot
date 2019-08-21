@@ -30,11 +30,16 @@
 			animation: color-change-2x 2s linear infinite alternate both;
 		}
 
-		h1 {
-			font-size: 72px;
-			color: azure;
+		.centered-text {
 			background: rgba(0, 0, 0, 0.8);
 			padding: 30px;
+		}
+
+		.text-pop-up-top {
+			font-size: 72px;
+			color: azure;
+
+			animation: text-pop-up-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 		}
 
 		@keyframes color-change-2x {
@@ -47,11 +52,26 @@
 			}
 		}
 
+		@keyframes text-pop-up-top {
+			0% {
+				transform: translateY(30px);
+				transform-origin: 50% 50%;
+				text-shadow: none;
+			}
+
+			100% {
+				transform-origin: 50% 50%;
+				text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3);
+			}
+		}
+
 	</style>
 </head>
 
 <body>
-	<h1>STATUS: ONLINE</h1>
+	<div class="centered-text">
+		<h1 class="text-pop-up-top">STATUS: ONLINE</h1>
+	</div>
 </body>
 
 </html>
