@@ -44,7 +44,7 @@ if (BOT_TOKEN) {
 					}
 				}
 
-				if (msg.includes('!del@')) {
+				if (msg.includes('!del')) {
 					console.log('deleting reply message');
 					message.delete();
 				}
