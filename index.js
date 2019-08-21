@@ -25,7 +25,7 @@ if (BOT_TOKEN) {
 		if (message.author.id != client.user.id) {
 			console.log("[" + message.author.username + "] " + msg);
 
-			if (msg.includes('!del')) {
+			if (msg.includes("!del")) {
 				console.log('deleting reply message');
 				message.delete(3000);
 			}
