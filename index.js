@@ -25,6 +25,11 @@ if (BOT_TOKEN) {
 		if (message.author.id != client.user.id) {
 			console.log("[" + message.author.username + "] " + msg);
 
+			if (msg.includes('!del')) {
+				console.log('deleting reply message');
+				message.delete(3000);
+			}
+
 			if (msg != null && msg.length > 0) {
 				if (msg.includes('@')) {
 					console.log('repling message');
@@ -42,11 +47,6 @@ if (BOT_TOKEN) {
 							});
 						});
 					}
-				}
-
-				if (msg.includes('!del')) {
-					console.log('deleting reply message');
-					message.delete(3000);
 				}
 			}
 		}
