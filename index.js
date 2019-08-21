@@ -35,14 +35,12 @@ if (BOT_TOKEN) {
 
 							message.channel.fetchMessage(messageId).then(replyMessage => {
 								sendMessageBox(message.channel, message.author, replyMessage, 0x008fff);
-								// });
-							}).then(() => {
-								if (message.content.includes('!@')) {
-									message.delete();
-								}
 							});
 						});
 					}
+				}
+				if (message.content.includes('!@')) {
+					message.delete();
 				}
 			}
 		}
