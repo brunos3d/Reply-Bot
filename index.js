@@ -21,28 +21,32 @@ if (BOT_TOKEN) {
 	});
 
 	client.on('message', message => {
+		const msg = message.content;
 		if (message.author.id != client.user.id) {
-			console.log("[" + message.author.username + "] " + message.content);
+			console.log("[" + message.author.username + "] " + msg);
 
-			if (message.content != null && message.content.length > 0) {
-				if (message.content.includes('@')) {
+			if (msg != null && msg.length > 0) {
+				if (msg.includes('@')) {
+					console.log('repling message');
+
 					const pattern = /@([0-9]+)/g;
-					const matches = message.content.match(pattern);
+					const matches = msg.match(pattern);
 
 					if (matches != null && matches.length > 0) {
 						matches.forEach(match => {
 							const messageId = match.replace('@', '');
 
 							message.channel.fetchMessage(messageId).then(replyMessage => {
+								console.log('sending reply message');
 								sendMessageBox(message.channel, message.author, replyMessage, 0x008fff);
 							});
 						});
 					}
+				}
 
-					if (message.content.includes('!@')) {
-						console.log('deleting reply message');
-						message.delete();
-					}
+				if (msg.includes('!del@')) {
+					console.log('deleting reply message');
+					message.delete();
 				}
 			}
 		}
