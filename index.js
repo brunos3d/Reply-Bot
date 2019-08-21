@@ -38,9 +38,11 @@ if (BOT_TOKEN) {
 							});
 						});
 					}
-				}
-				if (message.content.includes('!@')) {
-					message.delete();
+
+					if (message.content.includes('!@')) {
+						console.log('deleting reply message');
+						message.delete();
+					}
 				}
 			}
 		}
