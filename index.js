@@ -76,4 +76,3 @@ if (BOT_TOKEN) {
 
 	client.login(BOT_TOKEN);
 }
-
