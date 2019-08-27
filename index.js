@@ -39,26 +39,35 @@ if (BOT_TOKEN) {
 
 					if (matches != null && matches.length > 0) {
 						matches.forEach(match => {
-							const messageId = match.replace('@', '');
+							const messageId = match.replace(/(!del|!link|@)+(\s|\b)/gi, '').trim();
 
 							message.channel.fetchMessage(messageId).then(replyMessage => {
 								console.log('sending reply message');
-								sendMessageBox(message.channel, message.author, replyMessage, 0x008fff);
+								const server = replyMessage.guild;
+								sendMessageBox(server, message.channel, message.author, replyMessage, 0x008fff);
+
+								if (msg.includes('!link')) {
+									message.channel.send(`https://discordapp.com/channels/${server.id}/${message.channel.id}/${replyMessage.id}`);
+								}
 							});
 						});
 					}
+				}
+				if (msg.includes('!del')) {
+					message.delete(3000);
 				}
 			}
 		}
 	});
 
-	function sendMessageBox(channel, user, message, color) {
+	function sendMessageBox(server, channel, user, message, color) {
 		const embed = new RichEmbed();
 
-		embed.setAuthor(message.author.username, message.author.avatarURL);
+		embed.setAuthor(message.author.username, message.author.avatarURL, `https://discordapp.com/users/${message.author.id}`);
+		embed.setTitle("goto message");
+		embed.setURL(`https://discordapp.com/channels/${server.id}/${channel.id}/${message.id}`);
 		embed.setDescription(message.content);
-		// embed.setImage(message.attaurl);
-		embed.setFooter(user.username);
+		embed.setFooter(`${user.username} reply ${message.author.username}`);
 		embed.setTimestamp(message.createdAt);
 		embed.setColor(color);
 
